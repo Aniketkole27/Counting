@@ -20,8 +20,5 @@ document.body.addEventListener("click", () => {
 });
 
 reset.addEventListener("click", () => {
-  // num = -1; // Reset to 0
-  num = 0; // Reset num to 0
-  countNum.innerHTML = num; // Update the display
-  localStorage.setItem("greeting", num);
+  num = -1; // Reset to 0
 });
