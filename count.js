@@ -3,13 +3,12 @@
 
 
       
-      // let num = Number(localStorage.getItem("greeting"));
-      // countNum.innerHTML = num;
-      let num = 0;
+      let num = Number(localStorage.getItem("greeting"));
+      countNum.innerHTML = num;
         const counting = () =>{ 
           num++;
           countNum.innerHTML = num;
-          // localStorage.setItem('greeting',num)
+          localStorage.setItem('greeting',num)
         }
 
       document.body.addEventListener('keydown',(e)=>{
