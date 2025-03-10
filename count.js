@@ -3,9 +3,9 @@
 
 
       
-      let num = Number(localStorage.getItem("greeting"));
-      countNum.innerHTML = num;
-
+      // let num = Number(localStorage.getItem("greeting"));
+      // countNum.innerHTML = num;
+      let num = 0;
         const counting = () =>{ 
           num++;
           countNum.innerHTML = num;
