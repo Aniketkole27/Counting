@@ -9,7 +9,7 @@
         const counting = () =>{ 
           num++;
           countNum.innerHTML = num;
-          localStorage.setItem('greeting',num)
+          // localStorage.setItem('greeting',num)
         }
 
       document.body.addEventListener('keydown',(e)=>{
