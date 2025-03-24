@@ -10,12 +10,13 @@ body {
   color: black;
   user-select: none;
   touch-action: manipulation;
+  height: 100vh;
 }
 .main {
+  height: 50vh;
   position: relative;
   display: flex;
   justify-content: center;
-  height: 80vh;
   align-items: center;
   font-size: 15rem;
   transition: font-weight 1s;
@@ -23,6 +24,7 @@ body {
 .controllers{
   position: relative;
   display: inline;
+  top: 6rem;
     left: 5rem;
     padding: 1rem 1.5rem;
     font-size: 25px;
@@ -35,4 +37,9 @@ body {
 #btn1{
   /* width: 9rem; */
   padding: 1rem 2rem;
+}
+
+#data a{
+  text-decoration: none;
+  color: white;
 }

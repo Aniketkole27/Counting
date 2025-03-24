@@ -1,6 +1,7 @@
 const countNum = document.querySelector(".count");
 const reset = document.querySelector("#btn1");
 const colorBtn = document.querySelector("#btn2");
+const data = document.querySelector("#data");
 
 let num = Number(localStorage.getItem("greeting")) || 0;
 let bgColor = localStorage.getItem("color");
@@ -36,6 +37,7 @@ let colors = [
   "#6b8291c5",
   "#f1ee46c5",
 ];
+// Handing the background color
 let nextcolor = 0;
 colorBtn.addEventListener("click", (event) => {
   event.stopPropagation();
@@ -44,7 +46,11 @@ colorBtn.addEventListener("click", (event) => {
   localStorage.setItem("color", colors[nextcolor]);
   if (nextcolor === colors.length - 1) {
     nextcolor = 0;
-  }else {
-      nextcolor++;
-    }
+  } else {
+    nextcolor++;
+  }
 });
+
+data.addEventListener("click",(event)=>{
+    event.stopPropagation();
+})
