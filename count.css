@@ -48,12 +48,14 @@ html {
   position: fixed;
   left: 90%;
   bottom: 80%;
+  padding: 0.5rem 1rem 1rem 1rem;
 }
 
 @media screen and (max-width: 900px) {
   #lock {
     left: 85%;
     bottom: 85%;
+    padding: 0.5rem 1rem 1rem 1rem;
   }
 }
 
@@ -69,5 +71,6 @@ html {
   #lock {
     left: 80%;
     bottom: 90%;
+    padding: 0.5rem 1rem 1rem 1rem;
   }
 }

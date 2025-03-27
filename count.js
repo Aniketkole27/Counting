@@ -1,4 +1,3 @@
-
 let num = Number(localStorage.getItem("greeting")) || 0;
 let bgColor = localStorage.getItem("color");
 
@@ -11,22 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const reset = document.querySelector("#btn1");
   const colorBtn = document.querySelector("#btn2");
   const data = document.querySelector("#data");
-  const lock = document.querySelector("#lock")
+  const lock = document.querySelector("#lock");
 
-  // if (!countNum || !reset || !colorBtn || !data) {
-  //   console.log("Error: One or more elements are missing!");
-  //   return;
-  // }
-  // console.log(num)
-  // console.log(countNum);
   countNum.innerHTML = num;
   document.body.style.backgroundColor = bgColor;
 
-
+  let isLock = false;
   const counting = () => {
-    num++;
-    countNum.innerHTML = num;
-    localStorage.setItem("greeting", num);
+    if (!isLock) {
+      num++;
+      countNum.innerHTML = num;
+      localStorage.setItem("greeting", num);
+    }
   };
 
   document.body.addEventListener("keydown", (e) => {
@@ -40,10 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   reset.addEventListener("click", (event) => {
-    let agree = confirm("Do you want to resend your counter?")
-    if(agree){
+    let agree = confirm("Do you want to resend your counter?");
+    if (agree) {
       num = -1; // Reset to 0
-    }else{
+    } else {
       event.stopPropagation();
     }
   });
@@ -72,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   let entry = 0;
-  lock.addEventListener("click",(event)=>{
-    lock.innerHTML = "-|";
-    while(entry){
-      event.stopPropagation();
-    }
-  })
+  lock.addEventListener("click", (event) => {
+    event.stopPropagation()
+    isLock = !isLock;
+    lock.innerHTML = isLock ? "🔒" : "🔓";
+  });
 
   data.addEventListener("click", (event) => {
     event.stopPropagation();
+  
   });
 });
