@@ -1,16 +1,19 @@
-let num = Number(localStorage.getItem("greeting")) || 0;
+let num = Number(localStorage.getItem("counter")) || 0;
+// let num = 6000;
 let bgColor = localStorage.getItem("color");
+// let isLock = localStorage.getItem("isLock");
 
 export function getFinalCount() {
   return num;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", (e) => {
   const countNum = document.querySelector(".count");
   const reset = document.querySelector("#btn1");
   const colorBtn = document.querySelector("#btn2");
   const data = document.querySelector("#data");
   const lock = document.querySelector("#lock");
+  const Gname = document.querySelector(".Gname");
 
   countNum.innerHTML = num;
   document.body.style.backgroundColor = bgColor;
@@ -20,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!isLock) {
       num++;
       countNum.innerHTML = num;
-      localStorage.setItem("greeting", num);
+      localStorage.setItem("counter", num);
     }
   };
 
@@ -43,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // bg colors array
   let colors = [
     "#46f1a3c5",
     "#a346f1c5",
@@ -52,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "#6b8291c5",
     "#f1ee46c5",
   ];
+
   // Handing the background color
   let nextcolor = 0;
   colorBtn.addEventListener("click", (event) => {
@@ -71,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.stopPropagation()
     isLock = !isLock;
     lock.innerHTML = isLock ? "🔒" : "🔓";
+    // localStorage.setItem("lock", isLock);
   });
 
   data.addEventListener("click", (event) => {
