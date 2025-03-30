@@ -17,10 +17,14 @@ html {
   height: 100vh;
   position: relative;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 15rem;
+  font-size: 15em;
   transition: font-weight 1s;
+}
+.Gname{
+  font-size: 0.2em;
 }
 
 .controllers {
@@ -68,9 +72,11 @@ html {
     padding: 1rem 1.5rem;
     border-radius: 10px;
   }
+  
   #lock {
     left: 80%;
     bottom: 90%;
     padding: 0.5rem 1rem 1rem 1rem;
   }
-}
+} 
+
