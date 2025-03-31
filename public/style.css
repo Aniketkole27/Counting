@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lohit Marathi", Arial, "Droid Serif", "sans-serif";
+  }
+
+  body,
+  html {
+    height: 100vh;
+    background-color: #282a35;
+    color: white;
+  }
+
+  .main-container h1 {
+    position: relative;
+    top: 20px;
+    text-align: center;
+  }
+
+  .backHome {
+    position: absolute;
+    top: 7%;
+    left: 5%;
+    font-size: 16px;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .backHome a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .main-container .allDays {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 2rem;
+    gap: 1rem;
+    align-items: center;
+  }
+  .allDays .box {
+    position: relative;
+    border: 1px solid whitesmoke;
+    padding: 0.7rem;
+    height: 6rem;
+    display: flex;
+    gap: 4rem;
+  }
+
+  .box h2{
+    text-align: center;
+    color: center;
+  }
+  
+  .box span {
+    opacity: 0.5;
+  }
+  h2 {
+    margin-top: 1rem;
+  }
+
+  .rewords {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+  }
+  .rewords span {
+    font-size: 20px;
+    color: gold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8),
+      0 0 20px rgba(255, 215, 0, 0.6);
+    animation: twinkle 1s ease-in-out 1;
+  }
+  @keyframes twinkle {
+    0% {
+      text-shadow: 0 0 5px gold, 0 0 10px yellow;
+    }
+    50% {
+      text-shadow: 0 0 15px gold, 0 0 30px yellow;
+    }
+    100% {
+      text-shadow: 0 0 5px gold, 0 0 10px yellow;
+    }
+  }
