@@ -22,8 +22,8 @@
   }
 
   .backHome{
-    position: fixed;
-    top: 7%;
+    position: absolute;
+    top: 2%;
     left: 5%;
   }
 
@@ -57,10 +57,13 @@
     padding: 0.7rem;
     height: 6rem;
     display: flex;
+    text-align: center;
     gap: 4rem;
   }
 
   .box h2{
+    position: relative;
+    left: 8%;
     text-align: center;
     color: center;
   }
