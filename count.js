@@ -6,7 +6,7 @@ let bgColor = localStorage.getItem("color");
 export function getFinalCount() {
   return num;
 }
-
+  
 document.addEventListener("DOMContentLoaded", (e) => {
   const countNum = document.querySelector(".count");
   const reset = document.querySelector("#btn1");
