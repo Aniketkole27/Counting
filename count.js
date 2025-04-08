@@ -1,6 +1,7 @@
 let num = Number(localStorage.getItem("counter")) || 0;
 let bgColor = localStorage.getItem("color");
 const day = new Date();
+console.log(day.getHours())
 
 let numbers = JSON.parse(localStorage.getItem("dataArray"));
 export function getFinalCount() {
@@ -26,37 +27,41 @@ document.addEventListener("DOMContentLoaded", (e) => {
       localStorage.setItem("counter", num);
       updateValue(day.getDate() - 1, num);
     }
+    if(day.getHours() === 0) {
+      resetBtn(true);
+    }
   };
-
+  
   document.body.addEventListener("keydown", (e) => {
     if (e.code == "Space" && document.activeElement !== reset) {
       counting();
     }
   });
-
-  document.body.addEventListener("click", () => {
-     counting();
-  });
-
-  function resetBtn(){
-    let agree = confirm("Do you want to resend your counter?");
-    if (agree) {
-      num = -1;
-    }
-  }
-  reset.addEventListener("click", (event) => {
-    // let agree = confirm("Do you want to resend your counter?");
-    // if (agree) {
-    //   num = -1;
-    // } else 
-    {
-      event.stopPropagation();
-    }
-    resetBtn();
+  
+  document.body.addEventListener("click", (e) => {
+    e.stopPropagation();
+    counting();
   });
   
- 
+  function updateUI(){
+    countNum.innerHTML = num;
+    localStorage.setItem("counter", num);
+    updateValue(day.getDate() - 1, num);
+  }
 
+  function resetBtn(agree){
+    if (agree) {
+      num = 0;
+    }
+    updateUI();
+  }
+  
+  reset.addEventListener("click", (event) => {
+    event.stopPropagation();
+    let agree = confirm("Do you want to resend your counter ?");
+      resetBtn(agree);
+  });
+  
   // bg colors array
   let colors = [
     "#46f1a3c5",
