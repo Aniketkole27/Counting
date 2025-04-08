@@ -27,9 +27,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
       localStorage.setItem("counter", num);
       updateValue(day.getDate() - 1, num);
     }
-    if(day.getHours() === 0) {
-      resetBtn(true);
-    }
+    // if(day.getHours() === 0) {
+    //   resetBtn(true);
+    // }
   };
   
   document.body.addEventListener("keydown", (e) => {
