@@ -1,12 +1,12 @@
 let num = Number(localStorage.getItem("counter")) || 0;
-// let num = 6000;
 let bgColor = localStorage.getItem("color");
-// let isLock = localStorage.getItem("isLock");
+const day = new Date();
 
+let numbers = JSON.parse(localStorage.getItem("dataArray"));
 export function getFinalCount() {
-  return num;
+  return numbers;
 }
-  
+
 document.addEventListener("DOMContentLoaded", (e) => {
   const countNum = document.querySelector(".count");
   const reset = document.querySelector("#btn1");
@@ -19,11 +19,12 @@ document.addEventListener("DOMContentLoaded", (e) => {
   document.body.style.backgroundColor = bgColor;
 
   let isLock = false;
-  const counting = () => {
+  let counting = () => {
     if (!isLock) {
       num++;
       countNum.innerHTML = num;
       localStorage.setItem("counter", num);
+      updateValue(day.getDate() - 1, num);
     }
   };
 
@@ -34,17 +35,27 @@ document.addEventListener("DOMContentLoaded", (e) => {
   });
 
   document.body.addEventListener("click", () => {
-    counting();
+     counting();
   });
 
-  reset.addEventListener("click", (event) => {
+  function resetBtn(){
     let agree = confirm("Do you want to resend your counter?");
     if (agree) {
-      num = -1; // Reset to 0
-    } else {
+      num = -1;
+    }
+  }
+  reset.addEventListener("click", (event) => {
+    // let agree = confirm("Do you want to resend your counter?");
+    // if (agree) {
+    //   num = -1;
+    // } else 
+    {
       event.stopPropagation();
     }
+    resetBtn();
   });
+  
+ 
 
   // bg colors array
   let colors = [
@@ -61,7 +72,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   let nextcolor = 0;
   colorBtn.addEventListener("click", (event) => {
     event.stopPropagation();
-    // console.log("clicked")
     document.body.style.backgroundColor = colors[nextcolor];
     localStorage.setItem("color", colors[nextcolor]);
     if (nextcolor === colors.length - 1) {
@@ -73,14 +83,43 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   let entry = 0;
   lock.addEventListener("click", (event) => {
-    event.stopPropagation()
+    event.stopPropagation();
     isLock = !isLock;
     lock.innerHTML = isLock ? "🔒" : "🔓";
-    // localStorage.setItem("lock", isLock);
   });
 
-  data.addEventListener("click", (event) => {
-    event.stopPropagation();
-  
-  });
+
+    data.addEventListener("click", (event) => {
+      event.stopPropagation();
+      // counting();
+    });
+
 });
+
+// initializeArray();
+function functionCaller() {
+  initializeArray();
+  updateValue(day.getDate() - 1, num);
+}
+
+functionCaller();
+
+function initializeArray() {
+  if (!localStorage.getItem("dataArray")) {
+    let numbers = new Array(31).fill(0);
+    console.log(numbers);
+    localStorage.setItem("dataArray", JSON.stringify(numbers));
+  }
+}
+
+function updateValue(index, update) {
+  let numbers = JSON.parse(localStorage.getItem("dataArray"));
+  numbers[index] = update;
+  localStorage.setItem("dataArray", JSON.stringify(numbers));
+}
+
+// resetArray();
+function resetArray() {
+  localStorage.removeItem("dataArray");
+  initializeArray();
+}
