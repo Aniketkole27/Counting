@@ -1,7 +1,9 @@
 let num = Number(localStorage.getItem("counter")) || 0;
 let bgColor = localStorage.getItem("color");
 const day = new Date();
-console.log(day.getHours())
+let hours = day.getHours()
+let minute = day.getMinutes()
+let second = day.getSeconds()
 
 let numbers = JSON.parse(localStorage.getItem("dataArray"));
 export function getFinalCount() {
@@ -27,9 +29,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
       localStorage.setItem("counter", num);
       updateValue(day.getDate() - 1, num);
     }
-    // if(day.getHours() === 0) {
-    //   resetBtn(true);
-    // }
   };
   
   document.body.addEventListener("keydown", (e) => {
@@ -39,10 +38,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
   });
   
   document.body.addEventListener("click", (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     counting();
   });
   
+  if(day.getHours() === day.getMinutes() === day.getSeconds() === 0) {
+    resetBtn(true);
+  }
+
   function updateUI(){
     countNum.innerHTML = num;
     localStorage.setItem("counter", num);
@@ -123,7 +126,7 @@ function updateValue(index, update) {
   localStorage.setItem("dataArray", JSON.stringify(numbers));
 }
 
-// resetArray();
+resetArray();
 function resetArray() {
   localStorage.removeItem("dataArray");
   initializeArray();
