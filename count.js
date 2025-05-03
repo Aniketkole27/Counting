@@ -126,7 +126,7 @@ function updateValue(index, update) {
   localStorage.setItem("dataArray", JSON.stringify(numbers));
 }
 
-resetArray();
+// resetArray();
 function resetArray() {
   localStorage.removeItem("dataArray");
   initializeArray();
